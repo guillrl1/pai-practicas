@@ -1,0 +1,30 @@
+```gitignore
+# Dependencias
+node_modules/
+jspm_packages/
+
+# Logs de error y ejecución
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs
+*.log
+
+# Entorno de desarrollo (VS Code / JetBrains)
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Sistema Operativo
+.DS_Store
+Thumbs.db
+
+# Cobertura de tests y documentación generada
+coverage/
+out/
+docs/jsdoc/
+
+# Archivos de configuración local
+.env
+.env.local
