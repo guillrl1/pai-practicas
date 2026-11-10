@@ -1,0 +1,86 @@
+/* 1. Reset para cálculos exactos */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden; /* Evita scrolls innecesarios */
+}
+
+/* 2. Cabecera */
+header {
+  height: 52px;
+  border-bottom: 1px solid black;
+}
+
+header a, header h1 { float: left; margin-left: 10px; }
+header p { float: right; margin-right: 10px; }
+header::after { content: ""; display: table; clear: both; } /* Limpieza de floats */
+
+/* Contenedor principal */
+main {
+  position: relative;
+  height: calc(100vh - 52px); /* Resto de la altura para el main */
+  width: 100%;
+}
+
+/* P1: Izquierda (70%) */
+#p1-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70%;
+  height: 100%;
+  border: 2px solid black;
+}
+
+/* Columna derecha (30%) */
+#right-column {
+  position: absolute;
+  top: 0;
+  left: 70%;
+  width: 30%;
+  height: 100%;
+}
+
+/* P2: Superior derecho */
+#p2-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 30%;
+  border: 2px solid black;
+}
+
+/* P3: Controles inferior derecho */
+#p3-container {
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  height: 70%;
+  border: 2px solid black;
+  padding: 15px;
+  overflow-y: auto;
+}
+
+/* --- SEPARACIÓN DE CONTROLES --- */
+#p3-container label {
+  display: block;      /* Fuerza a que cada label ocupe su propia línea */
+  margin-bottom: 15px; /* Añade espacio vertical entre los controles */
+}
+
+#p3-container input[type="number"] {
+  margin-left: 10px;   /* Separa un poco el cuadro del texto */
+}
+
+/* 4. Canvas y Footer */
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+footer { display: none; }

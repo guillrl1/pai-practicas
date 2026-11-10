@@ -1,0 +1,32 @@
+{
+  "authors": [
+    "mdowds"
+  ],
+  "contributors": [
+    "masters3d",
+    "mdmower",
+    "SleeplessByte"
+  ],
+  "files": {
+    "solution": [
+      "pythagorean-triplet.ts"
+    ],
+    "test": [
+      "pythagorean-triplet.test.ts"
+    ],
+    "example": [
+      ".meta/proof.ci.ts"
+    ]
+  },
+  "blurb": "Given an integer N, find all Pythagorean triplets for which a + b + c = N.",
+  "custom": {
+    "version.tests.compatibility": "jest-29",
+    "flag.tests.task-per-describe": false,
+    "flag.tests.may-run-long": false,
+    "flag.tests.includes-optional": true,
+    "flag.tests.jest": true,
+    "flag.tests.tstyche": false
+  },
+  "source": "A variation of Problem 9 from Project Euler",
+  "source_url": "https://projecteuler.net/problem=9"
+}

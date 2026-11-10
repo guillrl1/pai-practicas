@@ -1,0 +1,16 @@
+{
+  "entryPointStrategy": "expand",
+  "entryPoints": ["src/exercises/home-work"],
+  "out": "docs",
+  "name": "Simulación de Proyectil - Guillermo López Concepción",
+  "includeVersion": true,
+  "readme": "README.md",
+  "exclude": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/bouncing-ball-animation-example/**"
+  ],
+  "categorizeByGroup": true,
+  "searchInComments": true,
+  "cleanOutputDir": true
+}

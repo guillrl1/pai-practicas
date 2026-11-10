@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UML - Simulador de Proyectil · Guillermo López Concepción</title>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral', securityLevel: 'loose' });
+  </script>
+</head>
+<body>
+
+  <header>
+    <h1>Diagrama de Clases UML</h1>
+    <nav><a href="../../../../public/index.html">Volver al índice</a></nav>
+  </header>
+
+  <main>
+    <div class="uml-container">
+      <pre class="mermaid">
+classDiagram
+    %% Model layer
+    class Projectile {
+        -GRAVITY: number$
+        -initialVelocity: number
+        -angleDegrees: number
+        -initialHeight: number
+        +getPositionAt(time: number) ProjectileState
+        +getTotalFlightTime() number
+        +getMaxHeight() number
+        -toRadians(deg: number) number
+    }
+    class ProjectileState {
+        &lt;&lt;interface&gt;&gt;
+        +x: number
+        +y: number
+        +time: number
+    }
+
+    %% View layer
+    class CanvasView {
+        &lt;&lt;abstract&gt;&gt;
+        #canvas: HTMLCanvasElement
+        #ctx: CanvasRenderingContext2D
+        #cssWidth: number
+        #cssHeight: number
+        +resize() void
+        +clear() void
+    }
+    class MainView {
+        -scale: number
+        -margin: number
+        -worldRangeX: number
+        -worldRangeY: number
+        -scaleFixed: boolean
+        +resize() void
+        +setWorldRange(rx: number, ry: number) void
+        +drawProjectile(x: number, y: number, color: string) void
+        +drawCannon(h0: number, ang: number) void
+        +clearAll() void
+        +resetScale() void
+        -recalculateScale() void
+        -drawAxes() void
+    }
+    class InfoView {
+        -maxObservedHeight: number
+        +resetMaxHeight() void
+        +renderStats(t: number, x: number, y: number) void
+        +clear() void
+    }
+    class ControlView {
+        -animateButton: HTMLButtonElement
+        -inputVelocity: HTMLInputElement
+        -inputAngle: HTMLInputElement
+        -inputHeight: HTMLInputElement
+        -checkboxPath: HTMLInputElement
+        +getSimulationParams() Object
+        +onAnimate(callback: Function) void
+    }
+
+    %% Controller layer
+    class ProjectileController {
+        -projectile: Projectile
+        -isAnimating: boolean
+        -startTime: number
+        -animFrameId: number
+        -colors: string[]
+        +startSimulation() void
+        -stopAnimation() void
+        -animationLoop(ts: number) void
+        -setupListeners() void
+    }
+
+    %% Relationships
+    CanvasView <|-- MainView : Inheritance
+    CanvasView <|-- InfoView : Inheritance
+    CanvasView <|-- ControlView : Inheritance
+    ProjectileController o-- MainView : Aggregation
+    ProjectileController o-- InfoView : Aggregation
+    ProjectileController o-- ControlView : Aggregation
+    ProjectileController ..> Projectile : Instantiates
+    Projectile ..> ProjectileState : Produces
+      </pre>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Componente</th>
+          <th>Responsabilidad en el Sistema</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Modelo (Projectile)</strong></td>
+          <td>Cálculos físicos puros. Independiente del navegador.</td>
+        </tr>
+        <tr>
+          <td><strong>Vistas (CanvasView)</strong></td>
+          <td>Gestión del elemento HTML5 Canvas y soporte HiDPI/Resize.</td>
+        </tr>
+        <tr>
+          <td><strong>Controlador</strong></td>
+          <td>Orquesta la comunicación y gestiona el bucle <code>requestAnimationFrame</code>.</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <footer>
+    PAI Práctica 10 - Universidad de La Laguna - Guillermo López Concepción
+  </footer>
+
+</body>
+</html>

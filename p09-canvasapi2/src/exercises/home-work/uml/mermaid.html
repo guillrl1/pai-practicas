@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:,">
+    <title>Alan Turing - Assignment 9 - UML Diagram</title>
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+    </script>
+  </head>
+  <body>
+    <h1>UML Class Diagram</h1>
+    <a href="../../../../public/index.html">← Back to index</a>
+    <pre class="mermaid">
+classDiagram
+  class MathViewport {
+    +number xMin
+    +number xMax
+    +number yMin
+    +number yMax
+  }
+  class CanvasViewport {
+    +number width
+    +number height
+    +number padding
+  }
+  class CoordinateSystem {
+    -MathViewport math
+    -CanvasViewport canvas
+    +toCanvasX(mx) number
+    +toCanvasY(my) number
+    +originX() number
+    +originY() number
+    +plotWidth() number
+    +plotHeight() number
+  }
+  class Renderer
+  Renderer : +render(context) void
+  class AxisRenderer {
+    -CoordinateSystem coordinateSystem
+    +render(context) void
+    -niceStep(range, ticks) number
+    -drawGrid(context) void
+    -drawAxes(context) void
+    -drawArrows(context) void
+  }
+  class FunctionRenderer {
+    -CoordinateSystem coordinateSystem
+    -MathFunction mathFunction
+    -string color
+    +render(context) void
+  }
+  class FunctionPlotter {
+    -HTMLCanvasElement canvas
+    -CanvasRenderingContext2D context
+    -Renderer[] functionRenderers
+    -number colorIndex
+    +addFunction(mathFunction) void
+    +clearFunctions() void
+    +draw() void
+    -makecoordinateSystem() CoordinateSystem
+  }
+  CoordinateSystem --> MathViewport : uses
+  CoordinateSystem --> CanvasViewport : uses
+  AxisRenderer ..|> Renderer : implements
+  FunctionRenderer ..|> Renderer : implements
+  AxisRenderer --> CoordinateSystem : uses
+  FunctionRenderer --> CoordinateSystem : uses
+  FunctionPlotter --> CoordinateSystem : creates
+  FunctionPlotter --> AxisRenderer : creates
+  FunctionPlotter o-- Renderer : contains
+    </pre>
+  </body>
+</html>

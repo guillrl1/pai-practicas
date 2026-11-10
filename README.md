@@ -23,3 +23,12 @@ node Jutge/P80660_Collatz.js
 ## Autor
 
 Guillermo López Concepción · Escuela Superior de Ingeniería y Tecnología (ESIT) · Universidad de La Laguna
+
+
+## Contenido
+
+- [`Jutge`](./Jutge)
+- [`p04-intro-ts`](./p04-intro-ts)
+- [`p09-canvasapi2`](./p09-canvasapi2)
+- [`p10-mvc-events-projectile`](./p10-mvc-events-projectile)
+- [`testing-jest-debugging`](./testing-jest-debugging)

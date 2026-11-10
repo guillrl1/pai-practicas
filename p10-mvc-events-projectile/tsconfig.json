@@ -1,0 +1,25 @@
+{
+  "display": "Configuration for Graphics Programming in PAI",
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "rootDir": "src",
+    "outDir": "dist",                    
+    "declaration": true,
+    "alwaysStrict": true,                     
+    "strict": true,                           
+    "lib": ["ESNext", "dom"],                 
+    "noImplicitAny": true,                    
+    "noFallthroughCasesInSwitch": true,       
+    "noImplicitReturns": true,                
+    "noUnusedLocals": true,
+    "skipLibCheck": true,                  
+    "forceConsistentCasingInFileNames": true  
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "src/exercises/bouncing-ball-animation-example/**"]
+}

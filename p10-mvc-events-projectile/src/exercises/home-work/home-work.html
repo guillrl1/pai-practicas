@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="../../../dist/exercises/home-work/main.js" defer></script>
+  <title>PAI - P10 - Simulador de Proyectil · Guillermo López Concepción</title>
+</head>
+<body>
+
+  <header>
+    <a href="../../../public/index.html">← Índice</a>
+    <h1>Simulación de Tiro Parabólico</h1>
+    <p>Guillermo López Concepción</p>
+  </header>
+
+  <main>
+    <!-- P1: canvas principal (70% ancho) -->
+    <div id="p1-container">
+      <canvas id="canvas-main"></canvas>
+    </div>
+
+    <!-- Columna derecha: P2 + P3 -->
+    <div id="right-column">
+
+      <!-- P2: estadísticas del último lanzamiento -->
+      <div id="p2-container">
+        <canvas id="canvas-info"></canvas>
+      </div>
+
+      <!-- P3: controles y parámetros -->
+      <div id="p3-container">
+        <h3>Parámetros de lanzamiento</h3>
+
+        <label>
+          Velocidad (v₀) m/s:
+          <input type="number" id="in-velocity" value="50" step="1" min="1">
+        </label>
+
+        <label>
+          Ángulo (θ) °:
+          <input type="number" id="in-angle" value="45" step="1" min="0" max="90">
+        </label>
+
+        <label>
+          Altura inicial (h₀) m:
+          <input type="number" id="in-height" value="0" step="1" min="0">
+        </label>
+
+        <label>
+          <input type="checkbox" id="check-path" checked>
+          Mostrar rastro de trayectoria
+        </label>
+
+        <div class="button-group">
+          <button id="btn-animate">¡Animar!</button>
+          <button id="btn-clear" class="secondary">Limpiar canvas</button>
+        </div>
+      </div>
+
+    </div><!-- /right-column -->
+  </main>
+
+  <footer>
+    <p>Programación de Aplicaciones Interactivas · ULL · Grado en Ingeniería Informática</p>
+  </footer>
+
+</body>
+</html>

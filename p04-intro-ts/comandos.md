@@ -1,0 +1,1 @@
+npx typedoc --entryPointStrategy expand ./src
